@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <script src="https://kit.fontawesome.com/faed88f7f0.js" crossorigin="anonymous"></script>
+
+    
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="package.css">
+    
+    <title> SoulTravel</title>
+  </head>
+  <body>
+    
+   <!-- 📞 Request Form Modal -->
+<div id="requestForm" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeForm()">&times;</span>
+    <h2>Request a Callback</h2>
+    <form id="callbackForm"> <!-- ✅ Fixed ID -->
+      <label>Destination</label>
+      <input type="text" id="destination-input" readonly>
+
+      <label>Name</label>
+      <input type="text" id="name-input" placeholder="Enter your name" required>
+
+      <label>Email</label>
+      <input type="email" id="email-input" placeholder="Enter your email" required>
+
+      <label>Phone</label>
+      <input type="tel" id="phone-input" placeholder="Enter your phone number" required>
+
+      <label>Choose Date of Travel</label>
+      <input type="date" id="travel-date-input" required>
+
+      <label>Number of People</label>
+      <input type="number" id="people-input" value="1" min="1" required>
+
+      <label>Remarks</label>
+      <textarea id="remarks-input" placeholder="Enter any remarks"></textarea>
+
+      <button type="submit" class="enquire-btn">Submit</button>
+    </form>
+  </div>
+</div>
+
+<!-- header section start hare -->
+
+<div id="header-container"></div>
+
+
+  
+    
+<!-- slider code start -->
+<div class="container">
+  
+  <img src="aero/slider_right.png" class="arrow left">
+  <div class="frame">
+      <div class="slider">
+          <img src="place image/manalibanner2.png" class="imag">
+          <img src="place image/greenvalley.png" class="imag">
+          <img src="place image/Rameswaram.jpg" class="imag">
+          <img src="place image/kullu.jpg" class="imag">
+          <img src="place image/Varkala (Kerala).jpg" class="imag">
+          <img src="place image/Mall Road .jpg" class="imag">
+          <img src="place image/simla.png" class="imag">
+      </div> <!--end slider-->
+  </div> <!--end frame-->
+  <img src="aero/slider_right.png" class="arrow right">
+</div><!-- end container -->
+
+
+    <!-- destination if result not found -->
+    <div id="no-result" class="no-result-msg hidden-on-search">
+      😕 No result found!
+      <div class="suggestions">
+        <h4>Try these some popular places 👇</h4>
+        <div class="work-list">
+          <div class="work" data-title="goa beach sunset">
+            <a href="package.html?dest=goa"><img src="place image/goa.jpg" alt="Goa"></a>
+            <div class="info">
+              <h3>Goa</h3>
+              <p>4N/5D · ₹13,499 per person</p>
+              <a href="#" class="book-btn" data-destination="Goa" onclick="openBookingForm(this)">Book Now</a>
+
+            </div>
+          </div>
+          <div class="work" data-title="manali snow">
+            <a href="package.html?dest=manali"><img src="imsge/manali.jpg" alt="Manali"></a>
+            <div class="info">
+              <h3>Manali</h3>
+              <p>3N/4D · ₹9,999 per person</p>
+              <a href="#" class="book-btn" data-destination="Manali" onclick="openBookingForm(this)">Book Now</a>
+
+            </div>
+          </div>
+          <div class="work" data-title="greenvalley">
+            <a href="package.html?dest=shimla"><img src="place image/greenvalley.png" alt="Greenvalley"></a>
+            <div class="info">
+              <h3>Greenvalley</h3>
+              <p>3N/4D · ₹7,999 per person</p>
+              <a href="#" class="book-btn" data-destination="Greenvalley" onclick="openBookingForm(this)">Book Now</a>
+
+            </div>
+          </div>
+          <div class="work" data-title="kullu">
+            <a href="package.html?dest=kullu"><img src="place image/kullu.jpg" alt="Kullu Special Trip"></a>
+            <div class="info">
+              <h3>Kullu Special Trip</h3>
+              <p>2N/3D · ₹6,500 per person</p>
+              <a href="#" class="book-btn" data-destination="kullu" onclick="openBookingForm(this)">Book Now</a>
+
+            </div>
+          </div>
+          <div class="work" data-title="manali snow">
+            <a href="package.html?dest=rameshwaram"><img src="place image/Rameswaram.jpg" alt="Rameswaram"></a>
+            <div class="info">
+              <h3>Rameswaram</h3>
+              <p>3N/4D · ₹9,999 per person</p>
+              
+              <a href="#" class="book-btn" data-destination="Rameswaram" onclick="openBookingForm(this)">Book Now</a>
+
+            </div>
+          </div>
+          <div class="work" data-title="rajgir hot springs">
+            <a href="package.html?dest=rajgir"><img src="image/rajgir.jpg" alt="Rajgir"></a>
+            <div class="info">
+              <h3>Rajgir</h3>
+              <p>3N/4D · ₹6,999 per person</p>
+              <a href="#" class="book-btn" data-destination="Rajgir" onclick="openBookingForm(this)">Book Now</a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--  end destination if result not found -->
+
+<!-- ✅ Updated Destination Section (Fully Searchable) -->
+<section id="destinations">
+
+  <h1 class="dest">🔥 Trending Places</h1>
+  <div class="work-list">
+    <div class="work" data-title="rajgir manali kaza chandertal">
+      <a href="package.html?dest=Rajgir"><img src="place image/rajgir.jpg" alt="Rajgir"></a>
+      <div class="info">
+        <h3>Rajgir</h3>
+        <h2><p>3N/4D · ₹6,999 per person</p>
+        
+        <a href="#" class="book-btn" data-destination="Rajgir" onclick="openBookingForm(this)">Book Now</a>
+
+      </div>
+    </div>
+
+    <div class="work" data-title="kashmir snow heaven">
+      <a href="package.html?dest=kashmir"><img src="place image/kasmir.jpg" alt="Kashmir"></a>
+      <div class="info">
+        <h3>Kashmir</h3>
+        <p>4N/5D · ₹11,999 per person</p>
+        <a href="#" class="book-btn" data-destination="kashmir" onclick="openBookingForm(this)">Book Now</a>
+
+      </div>
+    </div>
+
+    <div class="work" data-title="manali himachal snow hills">
+      <a href="package.html?dest=manali"><img src="place image/manali.jpg" alt="Manali"></a>
+
+      <div class="info">
+        <h3>Manali</h3>
+        <p>3N/4D · ₹9,999 per person</p>
+        <a href="#" class="book-btn" data-destination="manali" onclick="openBookingForm(this)">Book Now</a>
+
+      </div>
+    </div>
+  </div>
+
+  <h1 class="dest">🌨️ Shimla</h1>
+  <div class="work-list">
+    <div class="work" data-title="mall road simla shopping">
+      <a href="package.html?dest=shimla"><img src="place image/Mall Road .jpg" alt="shimla"></a>
+      <div class="info">
+        <h3>Mall Road</h3>
+        <p>2N/3D · ₹5,999 per person</p>
+        <a href="#" class="book-btn" data-destination="shimla mall road" onclick="openBookingForm(this)">Book Now</a>
+
+      </div>
+    </div>
+
+    <div class="work" data-title="green valley simla view point">
+      <a href="package.html?dest=shimla"><img src="place image/Green Valley.jpg" alt="GreenValley"></a>
+      <div class="info">
+        <h3>Green Valley</h3>
+        <p>2N/3D · ₹4,999 per person</p>
+        <a href="#" class="book-btn" data-destination="Greenvalley" onclick="openBookingForm(this)">Book Now</a>
+
+      </div>
+    </div>
+
+    <div class="work" data-title="toy train shimla ride">
+      <a href="package.html?dest=shimla"><img src="place image/Toy Train.jpg" alt="Toy"></a>
+      <div class="info">
+        <h3>Toy Train</h3>
+        <p>1 Day · ₹1,499 per person</p>
+        <a href="#" class="book-btn" data-destination="Shimla toy train " onclick="openBookingForm(this)">Book Now</a>
+
+      </div>
+    </div>
+  </div>
+
+  <h1 class="dest">⛰️ Himanchal</h1>
+  <div class="work-list">
+    <div class="work" data-title="himachal mountain view">
+      <a href="package.html?dest=himachal"><img src="place image/himanchal.jpg" alt="himanchal"></a>
+      <div class="info">
+        <h3>Himachal</h3>
+        <p>3N/4D · ₹7,999 per person</p>
+        <a href="#" class="book-btn" data-destination="Himanchal" onclick="openBookingForm(this)">Book Now</a>
+
+      </div>
+    </div>
+
+    <div class="work" data-title="kullu valley hills">
+      <a href="package.html?dest=himachal"><img src="place image/kullu.jpg" alt="Kullu"></a>
+      <div class="info">
+        <h3>Kullu</h3>
+        <p>2N/3D · ₹6,500 per person</p>
+        <a href="#" class="book-btn" data-destination="Kullu" onclick="openBookingForm(this)">Book Now</a>
+
+      </div>
+    </div>
+
+    <div class="work" data-title="dharamshala buddhist temple">
+      <a href="package.html?dest=himachal"><img src="place image/dharmasal.jpg" alt="Dharamshala"></a>
+      <div class="info">
+        <h3>Dharamshala</h3>
+        <p>3N/4D · ₹8,499 per person</p>
+        <a href="#" class="book-btn" data-destination="Dharamshala" onclick="openBookingForm(this)">Book Now</a>
+
+      </div>
+    </div>
+  </div>
+
+  <h1 class="dest">🏖️ Beach Vibes</h1>
+  <div class="work-list">
+    <div class="work" data-title="goa beach party sunset">
+      <a href="package.html?dest=goa"><img src="place image/goa1.jpg" alt="Goa"></a>
+      <div class="info">
+        <h3>Goa</h3>
+        <p>4N/5D · ₹13,499 per person</p>
+        <a href="#" class="book-btn" data-destination="Goa" onclick="openBookingForm(this)">Book Now</a>
+
+      </div>
+    </div>
+
+    <div class="work" data-title="puri jagannath temple beach">
+      <a href="package.html?dest=puri"><img src="place image/puri.jpg" alt="Puri"></a>
+      <div class="info">
+        <h3>Puri</h3>
+        <p>2N/3D · ₹5,999 per person</p>
+        <a href="#" class="book-btn" data-destination="Puri" onclick="openBookingForm(this)">Book Now</a>
+
+      </div>
+    </div>
+
+    <div class="work" data-title="varkala kerala beach waves">
+      <img src="place image/Varkala (Kerala).jpg" alt="Kerala">
+      <div class="info">
+        <h3>Varkala</h3>
+        <p>3N/4D · ₹7,499 per person</p>
+        <a href="#" class="book-btn" data-destination="Varkalak kerala" onclick="openBookingForm(this)">Book Now</a>
+
+      </div>
+    </div>
+
+    <div class="work" data-title="rameswaram spiritual temple sea">
+      <a href="package.html?dest=rameshwaram"><img src="place image/Rameswaram.jpg" alt="Rameswaram"></a>
+      <div class="info">
+        <h3>Rameswaram</h3>
+        <p>3N/4D · ₹6,999 per person</p>
+        <a href="#" class="book-btn" data-destination="Rameswaram" onclick="openBookingForm(this)">Book Now</a>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- blog section code -->
+<!-- ✅ Blog Section -->
+<section id="blog" class="blog-section">
+  <h2 class="section-title">📝  Blogs</h2>
+  <h4 class="section-down">Latest from Soultravel</h4>
+
+  <div class="blog-container">
+    
+    <div class="blog-card">
+      <div class="blog-img">
+        <img src="blogimage/blog1.jpeg" alt="Blog 1">
+      </div>
+      <div class="blog-content">
+        <h3>Hidden Himachal Gems</h3>
+        <p>Explore valleys and local secrets beyond Manali & Shimla.</p>
+        <a href="#" class="read-btn">Read More</a>
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-img">
+        <img src="blogimage/blog2.png" alt="Blog 2">
+      </div>
+      <div class="blog-content">
+        <h3>Beach Ready Checklist</h3>
+        <p>Everything you need for a stress-free tropical escape.</p>
+        <a href="#" class="read-btn">Read More</a>
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-img">
+        <img src="blogimage/blog3.jpg" alt="Blog 3">
+      </div>
+      <div class="blog-content">
+        <h3>Spiritual Trip to Rajgir</h3>
+        <p>From Venuvan to hot springs — find your peace in Bihar.</p>
+        <a href="#" class="read-btn">Read More</a>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-img">
+        <img src="blogimage/blog3.jpg" alt="Blog 3">
+      </div>
+      <div class="blog-content">
+        <h3>Spiritual Trip to Rajgir</h3>
+        <p>From Venuvan to hot springs — find your peace in Bihar.</p>
+        <a href="#" class="read-btn">Read More</a>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-img">
+        <img src="blogimage/blog3.jpg" alt="Blog 3">
+      </div>
+      <div class="blog-content">
+        <h3>Spiritual Trip to Rajgir</h3>
+        <p>From Venuvan to hot springs — find your peace in Bihar.</p>
+        <a href="#" class="read-btn">Read More</a>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-img">
+        <img src="blogimage/blog3.jpg" alt="Blog 3">
+      </div>
+      <div class="blog-content">
+        <h3>Spiritual Trip to Rajgir</h3>
+        <p>From Venuvan to hot springs — find your peace in Bihar.</p>
+        <a href="#" class="read-btn">Read More</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- end blog section -->
+<!-- ✅ Testimonials / Reviews Section with User Images -->
+<section id="reviews" class="review-section">
+  <h2 class="section-title">⭐ What Our Travelers Say</h2>
+  <div class="review-container">
+
+    <div class="review-card">
+      <div class="review-top">
+        <img src="reviewimage/priya.jpg" alt="Priya" class="review-img">
+        <h4>Priya Sinha</h4>
+      </div>
+      <p class="review-text">"Rajgir trip was magical! Very well planned. Hot springs & ropeway were my favorite part."</p>
+    </div>
+
+    <div class="review-card">
+      <div class="review-top">
+        <img src="reviewimage/aman.jpg" alt="Aman" class="review-img">
+        <h4>Aman Verma</h4>
+      </div>
+      <p class="review-text">"Highly recommend SoulTravel! My Goa beach package was affordable and seamless."</p>
+    </div>
+
+    <div class="review-card">
+      <div class="review-top">
+        <img src="reviewimage/fatima.jpg"Fatima" class="review-img">
+        <h4>Fatima Ali</h4>
+      </div>
+      <p class="review-text">"Kashmir felt like heaven. Clean stays, great food, and supportive team. Will book again."</p>
+    </div>
+
+    <div class="review-card">
+      <div class="review-top">
+        <img src="reviewimage/rakesh.jpg" alt="Rakesh" class="review-img">
+        <h4>Rakesh Kumar</h4>
+      </div>
+      <p class="review-text">"Took my parents to Puri. They loved the Jagannath temple and beach walk. Thank you!"</p>
+    </div>
+    <div class="review-card">
+      <div class="review-top">
+        <img src="reviewimage/review5.jpg" alt="Rakesh" class="review-img">
+        <h4>kishan kumar</h4>
+      </div>
+      <p class="review-text">
+        "Kashmir was breathtaking. Every moment felt like a postcard. Dal Lake shikara ride and Gulmarg cable car ride were the highlights!"</p>
+    </div>
+    <div class="review-card">
+      <div class="review-top">
+        <img src="reviewimage/manoj.jpg" alt="Rakesh" class="review-img">
+        <h4>manoj sharma</h4>
+      </div>
+      <p class="review-text">"SoulTravel made my Manali trip truly unforgettable! The snowfall, paragliding, and bonfire night made the entire journey feel magical."</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- review section end here -->
+
+<!-- footer section -->
+<!-- ✅ Footer Section -->
+<footer class="footer">
+  <div class="footer-container">
+    <!-- Column 1: Logo & Contact Info -->
+    <div class="footer-col">
+      <img src="logo/logo5.png" alt="Logo" class="footer-logo" />
+      <h3>SoulTravel</h3>
+      <p>soultravel.com</p>
+      <p>+91 9117353178</p>
+    </div>
+
+    <!-- Column 2: Important Links -->
+    <div class="footer-col">
+      <h4>Important Links</h4>
+      <ul>
+        <li><a href="#" onclick="openContactInfo()">Contact Us</a></li>
+
+        <li><a href="about.html">About Us</a></li>
+
+        <li><a href="#">Career</a></li>
+        <li><a href="#">Cancellation Policy</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms & Conditions</a></li>
+      </ul>
+    </div>
+
+    <!-- Column 3: Social Icons -->
+    <div class="footer-col">
+      <h4>Follow us on Social Media</h4>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 SoulTravel.com</p>
+  </div>
+</footer>
+
+  
+
+<!-- 📍 Contact Info Modal -->
+<div id="contactInfoModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeContactInfo()">&times;</span>
+    <h2>📞 Get in Touch</h2>
+    <p><strong>Name:</strong> Kishan Kumar</p>
+    <p><strong>Phone:</strong> +91 91173 53178</p>
+    <p><strong>Email:</strong> support@soultravel.com</p>
+    <p><strong>Address:</strong> 2nd Floor, Bajar Samiti Patna, Bihar, 800004</p>
+    <p><strong>WhatsApp:</strong> <a href="https://wa.me/919117353178" target="_blank">Chat Now</a></p>
+  </div>
+</div>
+
+<!-- end contact info -->
+    <script src="https://unpkg.com/scrollreveal"></script> 
+    
+    <script src="slider.js"></script>
+     <!-- for header section  -->
+     <script>
+      fetch("header.html")
+        .then(res => res.text())
+        .then(data => {
+          document.getElementById("header-container").innerHTML = data;
+    
+          // 🧠 Header load hone ke turant baad functions chalayenge
+          if (typeof onHeaderReady === "function") {
+            setTimeout(onHeaderReady, 50); // 50ms delay to allow DOM update
+          }
+        });
+    </script>
+    <script src="main.js"></script>
+  </body>
+</html>
